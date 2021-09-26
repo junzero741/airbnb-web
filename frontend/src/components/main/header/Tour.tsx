@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { EmptyInterface } from "./../../../utils/interfaces";
 
-export default function Tour(props: EmptyInterface) {
+export default function Tour({}: {}) {
 	return (
 		<>
 			<StyleList>
@@ -15,8 +14,9 @@ export default function Tour(props: EmptyInterface) {
 
 export const StyleList = styled.ul`
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	li {
 		cursor: pointer;
+		padding: 0 20px;
 	}
 `;

@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { ReactComponent as MenuIcon } from "./../../../../icons/menu.svg";
 import { ReactComponent as UserIcon } from "./../../../../icons/user.svg";
-import { EmptyInterface } from "./../../../../utils/interfaces";
 
-export default function UserMenu(props: EmptyInterface) {
+export default function UserMenu({}: {}) {
 	return (
 		<>
 			<StyleUserMenu>
@@ -17,6 +16,7 @@ export default function UserMenu(props: EmptyInterface) {
 }
 
 const StyleUserMenu = styled.div`
+	position: relative;
 	display: flex;
 	justify-content: flex-end;
 `;
@@ -28,7 +28,7 @@ const UserButton = styled.button`
 	width: 76px;
 	height: 40px;
 	border-radius: 25px;
-	border: none;
+	border: 1px solid #bdbdbd;
 	background-color: white;
 	.menu_icon {
 		padding: 2px;

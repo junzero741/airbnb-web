@@ -1,11 +1,16 @@
+import styled from "styled-components";
 import SearchBar from "./../search_bar/SearchBar";
-import { EmptyInterface } from "./../../utils/interfaces";
-import styled from 'styled-components';
 
-export default function Main(props: EmptyInterface) {
+interface MainProps {
+	filter: any;
+	setFilter: any;
+	setFlag?: any;
+}
+
+export default function Main({ filter, setFilter }: MainProps) {
 	return (
 		<StyleMain>
-			<SearchBar />
+			<SearchBar filter={filter} setFilter={setFilter} />
 		</StyleMain>
 	);
 }
@@ -14,4 +19,4 @@ const StyleMain = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-`
+`;
