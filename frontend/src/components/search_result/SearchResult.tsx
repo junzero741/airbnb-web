@@ -17,9 +17,17 @@ import BookContent from "./BookContent";
 export default function SearchResult() {
 	const URL = parseURL(window.location.href);
 	const filterData = getFilter(window.location.href);
-	const { checkIn, checkOut, minPrice, maxPrice, numOfPeople }: FilterProps = filterData;
+	const { checkIn, checkOut, minPrice, maxPrice, numOfPeople }: FilterProps =
+		filterData;
 	const [data, setData] = useState([]);
-	const [filter, setFilter] = useState<FilterProps>({ city: undefined, checkIn: checkIn, checkOut: checkOut, minPrice: minPrice, maxPrice: maxPrice, numOfPeople: numOfPeople });
+	const [filter, setFilter] = useState<FilterProps>({
+		city: undefined,
+		checkIn: checkIn,
+		checkOut: checkOut,
+		minPrice: minPrice,
+		maxPrice: maxPrice,
+		numOfPeople: numOfPeople,
+	});
 	const [isMini, setIsMini] = useState(true);
 	const [isModalOn, setIsModalOn] = useRecoilState(bookModalState);
 	const [cardInfo] = useRecoilState(cardInfoState);
@@ -65,14 +73,22 @@ export default function SearchResult() {
 			<StyleHeader>
 				<Logo />
 				{isMini ? (
-					<div onClick={(e) => handleSearchBar(e)}>
+					<div onClick={e => handleSearchBar(e)}>
 						{" "}
 						<MiniSearchBar filter={filter} />
 					</div>
 				) : (
 					<NewHeaderWrapper>
 						<Tour />
-						<SearchBarArea>{!isMini && <SearchBar filter={filter} setFilter={setFilter} setFlag={true} />}</SearchBarArea>
+						<SearchBarArea>
+							{!isMini && (
+								<SearchBar
+									filter={filter}
+									setFilter={setFilter}
+									setFlag={true}
+								/>
+							)}
+						</SearchBarArea>
 					</NewHeaderWrapper>
 				)}
 				<SideContainer />
@@ -83,9 +99,9 @@ export default function SearchResult() {
 						<StyleRooms>
 							<Rooms data={data} filter={filter} />
 						</StyleRooms>
-						<StyleMap>
+						{/* <StyleMap>
 							<MapMemo data={data} />
-						</StyleMap>
+						</StyleMap> */}
 					</MainWrapper>
 				) : (
 					<Loading>숙소를 불러오는 중...</Loading>
@@ -129,7 +145,8 @@ const StyleHeader = styled.div`
 	display: grid;
 	grid-template-columns: 4fr 2fr 4fr;
 	align-items: center;
-	box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5), 0px 2px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 4px rgba(204, 204, 204, 0.5),
+		0px 2px 4px rgba(0, 0, 0, 0.25);
 	backdrop-filter: blur(4px);
 	z-index: 1;
 `;
